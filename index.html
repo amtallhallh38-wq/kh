@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>الفخامة</title>
+<link rel="stylesheet" href="des.css">
+</head>
+
+<body>
+
+<h1>الفخامة</h1>
+<h2>اختار تفصيلك</h2>
+
+<!-- نوع القماش -->
+<div id="cloth-section">
+    <h3>نوع القماش</h3>
+    <label><input type="radio" name="cloth" value="1"> قماش 1</label><br>
+    <label><input type="radio" name="cloth" value="2"> قماش 2</label><br>
+    <label><input type="radio" name="cloth" value="3"> قماش 3</label><br>
+    <label><input type="radio" name="cloth" value="4"> قماش 4</label><br>
+</div>
+
+<!-- اللون -->
+<div id="color-section" style="display:none;">
+    <h3>اللون</h3>
+    <div id="colors"></div>
+</div>
+
+<!-- الطول -->
+<div id="length-section" style="display:none;">
+    <h3>الطول</h3>
+    <label><input type="radio" name="length" value="1.5"> 1.5 متر</label><br>
+    <label><input type="radio" name="length" value="2"> 2 متر</label><br>
+    <label><input type="radio" name="length" value="3"> 3 متر</label><br>
+    <label><input type="radio" name="length" value="4"> 4 متر</label><br>
+</div>
+
+<!-- التفصيل -->
+<div id="tailor-section" style="display:none;">
+    <h3>التفصيل</h3>
+    <label><input type="radio" name="tailor" value="1"> تفصيل 1</label><br>
+    <label><input type="radio" name="tailor" value="2"> تفصيل 2</label><br>
+    <label><input type="radio" name="tailor" value="3"> تفصيل 3</label><br>
+</div>
+
+<!-- الكلفة -->
+<div id="cost-section" style="display:none;">
+    <h3>الكلفة</h3>
+    <label><input type="radio" name="cost" value="0.5"> نص كلفة</label><br>
+    <label><input type="radio" name="cost" value="1"> كلفة كاملة</label><br>
+</div>
+
+<h2>السعر النهائي:</h2>
+<h1 id="price">0 جنيه</h1>
+
+<script src="script.js"></script>
+</body>
+</html>
