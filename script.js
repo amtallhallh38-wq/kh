@@ -1,80 +1,117 @@
-// الألوان المتاحة لكل نوع قماش
-const colorsData = {
-    1: ["كحلي", "أبيض", "بني"],
-    2: ["أسود", "رمادي"],
-    3: ["أزرق", "بيج", "سكري"],
-    4: ["أخضر", "نبيتي"]
+// ===================== أسعار القماش ====================
+const clothPrices = {
+    1: 250,
+    2: 200,
+    3: 220,
+    4: 270,
+    5: 950,
+    6: 250,
+    7: 290,
+    8: 180
 };
 
-// أول Step = اختيار القماش
+// ===================== ألوان كل نوع =====================
+const colorsData = {
+    1: ["كحلي", "أسود", "جملي", "رصاصي فاتح", "رصاصي غامق", "فراني", "زيتي"],
+    2: ["بني محروق", "بيج", "بني فاتح", "بني غامق", "كحلي", "رصاصي فاتح", "رصاصي غامق", "فراني"],
+    3: ["رصاصي فاتح", "رصاصي غامق", "بني فاتح", "بني غامق", "بيج"],
+    4: ["أسود", "رصاصي فاتح", "رصاصي غامق", "بني فاتح", "بني غامق", "زيتي", "كحلي"],
+    5: ["جملي", "مشمشي", "أسود", "زيتي", "فراني"],
+    6: ["كحلي", "أبيض", "بني"],
+    7: ["زيتي", "سماوي", "رمادي", "بني فاتح", "بني غامق", "أسود", "جملي"],
+    8: ["بيج فاتح"]
+};
+
+// ===================== أسعار (التفصيل + الكُلفة) =====================
+const finalPrices = {
+    1: 250,   // تفصيل عادي
+    2: 300,   // تفصيل مكفف
+    3: 850,   // نص كُلفة
+    4: 1500,  // كُلفة كاملة
+    5: 1000,  // كُلفة كاملة بدون شريط
+    6: 600    // نص كُلفة بدون شريط
+};
+
+// ===================== عناصر HTML =====================
 const clothRadios = document.querySelectorAll('input[name="cloth"]');
 const colorSection = document.getElementById("color-section");
 const colorsDiv = document.getElementById("colors");
+const lengthSection = document.getElementById("length-section");
+const finalSection = document.getElementById("final-section");
+const priceSpan = document.getElementById("price");
 
+// ===================== عند اختيار نوع القماش =====================
 clothRadios.forEach(radio => {
-    radio.addEventListener("change", function () {
+    radio.addEventListener("change", () => {
+        const clothId = radio.value;
 
-        // امسح الألوان القديمة
+        // عرض الألوان
         colorsDiv.innerHTML = "";
-
-        // هات الألوان الخاصة بالقماش ده
-        const clothId = this.value;
-        const availableColors = colorsData[clothId];
-
-        // ضيف كل لون
-        availableColors.forEach(color => {
-            colorsDiv.innerHTML +=
-                "<label><input type='radio' name='color' value='" + color + "'> " + color + "</label><br>";
+        colorsData[clothId].forEach(color => {
+            colorsDiv.innerHTML += `
+                <label><input type="radio" name="color" value="${color}"> ${color}</label><br>
+            `;
         });
 
-        // إظهار قسم الألوان
         colorSection.style.display = "block";
+        lengthSection.style.display = "none";
+        finalSection.style.display = "none";
 
-        // اخفاء اللي بعده
-        document.getElementById("length-section").style.display = "none";
-        document.getElementById("tailor-section").style.display = "none";
-        document.getElementById("cost-section").style.display = "none";
-
-        updatePrice();
         addColorEvents();
+        updatePrice();
     });
 });
 
+// ===================== بعد اختيار اللون =====================
 function addColorEvents() {
-    const colorRadios = document.querySelectorAll("input[name='color']");
-    colorRadios.forEach(radio => {
-        radio.addEventListener("change", function () {
-
-            document.getElementById("length-section").style.display = "block";
-            document.getElementById("tailor-section").style.display = "block";
-            document.getElementById("cost-section").style.display = "block";
-
+    document.querySelectorAll('input[name="color"]').forEach(radio => {
+        radio.addEventListener("change", () => {
+            lengthSection.style.display = "block";
+            finalSection.style.display = "none";
+            addLengthEvents();
             updatePrice();
-            addOtherEvents();
         });
     });
 }
 
-function addOtherEvents() {
-    const groups = ["length", "tailor", "cost"];
-
-    groups.forEach(group => {
-        const radios = document.querySelectorAll("input[name='" + group + "']");
-        radios.forEach(radio => {
-            radio.addEventListener("change", updatePrice);
+// ===================== بعد اختيار الطول =====================
+function addLengthEvents() {
+    document.querySelectorAll('input[name="length"]').forEach(radio => {
+        radio.addEventListener("change", () => {
+            finalSection.style.display = "block";
+            addFinalEvents();
+            updatePrice();
         });
     });
 }
 
+// ===================== بعد اختيار التفصيل + الكُلفة =====================
+function addFinalEvents() {
+    document.querySelectorAll('input[name="final"]').forEach(radio => {
+        radio.addEventListener("change", updatePrice);
+    });
+}
+
+// ===================== حساب السعر =====================
 function updatePrice() {
-    let price = 0;
 
-    // هات كل الاختيارات اللي اتعملها تشيك
-    const selected = document.querySelectorAll("input[type='radio']:checked");
+    let total = 0;
 
-    selected.forEach(r => {
-        price += 10; // كل حاجة 10 وإنت تعدلهم بعدين
-    });
+    const cloth = document.querySelector('input[name="cloth"]:checked');
+    const length = document.querySelector('input[name="length"]:checked');
+    const finalChoice = document.querySelector('input[name="final"]:checked');
 
-    document.getElementById("price").innerHTML = price + " جنيه";
+    if (cloth) {
+        const base = clothPrices[cloth.value];
+
+        if (length) {
+            total += base * length.value;  // سعر القماش × عدد الأمتار
+        }
+    }
+
+    if (finalChoice) {
+        total += finalPrices[finalChoice.value]; // إضافة التفصيل + الكُلفة
+    }
+
+    priceSpan.textContent = total;
 }

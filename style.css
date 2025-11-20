@@ -1,0 +1,70 @@
+/* ===== الخط العام وكبر الحجم ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Cairo", sans-serif;
+    background: linear-gradient(180deg, #0d1a26, #0b1722, #08131c);
+    color: #d6e9ff;
+    font-size: 22px; /* خط كبير وواضح للموبايل */
+    text-align: center;
+}
+
+/* ===== عنوان الموقع ===== */
+h1 {
+    font-size: 40px;
+    color: #8ed7ff;
+    text-shadow: 0 0 12px #4fc3f7;
+    margin-top: 20px;
+}
+
+h2, h3 {
+    color: #b8d7ff;
+    text-shadow: 0 0 8px #3ea0d9;
+}
+
+/* ===== الصناديق ===== */
+#cloth-list,
+#color-section,
+#length-section,
+#final-section {
+    width: 85%;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(15, 30, 45, 0.8);
+    border: 1px solid #1f425c;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.12);
+}
+
+/* ===== اللابلز ===== */
+label {
+    display: block;
+    padding: 10px;
+    margin: 8px 0;
+    background: rgba(18, 40, 55, 0.7);
+    border-radius: 8px;
+    border: 1px solid #204c63;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 22px;
+}
+
+label:hover {
+    background: rgba(35, 80, 110, 0.7);
+    box-shadow: 0 0 10px rgba(0, 160, 255, 0.25);
+}
+
+/* ===== الراديو ===== */
+input[type="radio"] {
+    transform: scale(1.4);
+    margin-left: 12px;
+}
+
+/* ===== السعر ===== */
+#price {
+    font-size: 45px;
+    font-weight: bold;
+    color: #8ddbff;
+    text-shadow: 0 0 15px #4fc3f7;
+    margin-bottom: 40px;
+}

@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta name="google-site-verification" content="GjVUHqx814Gp-dAcX3noFdJ7oZNEfwBGGad4KMrExPw" />
-<meta charset="UTF-8">
-<title>الفخامة</title>
-<link rel="stylesheet" href="des.css">
+    <meta charset="UTF-8">
+
+    <!-- 🔵 سطر الخط الجديد (لازم) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <title>الفخامة</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>الفخامة</h1>
-<h2>اختار تفصيلك</h2>
+    <h1>الفخامة</h1>
+    <h2>اختار تفصيلك</h2>
 
-<!-- نوع القماش -->
-<div id="cloth-section">
-    <h3>نوع القماش</h3>
-    <label><input type="radio" name="cloth" value="1"> قماش 1</label><br>
-    <label><input type="radio" name="cloth" value="2"> قماش 2</label><br>
-    <label><input type="radio" name="cloth" value="3"> قماش 3</label><br>
-    <label><input type="radio" name="cloth" value="4"> قماش 4</label><br>
-</div>
+    <!-- نوع القماش -->
+    <div id="cloth-section">
+        <h3>نوع القماش</h3>
 
-<!-- اللون -->
-<div id="color-section" style="display:none;">
-    <h3>اللون</h3>
-    <div id="colors"></div>
-</div>
+        <label><input type="radio" name="cloth" value="1"> سلكة 3000</label>
+        <label><input type="radio" name="cloth" value="2"> فرنساوي</label>
+        <label><input type="radio" name="cloth" value="3"> جلدن أفيكاتو</label>
+        <label><input type="radio" name="cloth" value="4"> شوفت إنجلبزي</label>
+        <label><input type="radio" name="cloth" value="5"> صوف إمبريال 55555</label>
+        <label><input type="radio" name="cloth" value="6"> صوف غزل المحلة</label>
+        <label><input type="radio" name="cloth" value="7"> الجوخ</label>
+        <label><input type="radio" name="cloth" value="8"> كتان ياباني</label>
+    </div>
 
-<!-- الطول -->
-<div id="length-section" style="display:none;">
-    <h3>الطول</h3>
-    <label><input type="radio" name="length" value="1.5"> 1.5 متر</label><br>
-    <label><input type="radio" name="length" value="2"> 2 متر</label><br>
-    <label><input type="radio" name="length" value="3"> 3 متر</label><br>
-    <label><input type="radio" name="length" value="4"> 4 متر</label><br>
-</div>
+    <!-- اللون (يظهر بعد اختيار القماش) -->
+    <div id="color-section" style="display:none;">
+        <h3>اللون</h3>
+        <div id="colors"></div>
+    </div>
 
-<!-- التفصيل -->
-<div id="tailor-section" style="display:none;">
-    <h3>التفصيل</h3>
-    <label><input type="radio" name="tailor" value="1"> تفصيل 1</label><br>
-    <label><input type="radio" name="tailor" value="2"> تفصيل 2</label><br>
-    <label><input type="radio" name="tailor" value="3"> تفصيل 3</label><br>
-</div>
+    <!-- الطول -->
+    <div id="length-section" style="display:none;">
+        <h3>الطول</h3>
 
-<!-- الكلفة -->
-<div id="cost-section" style="display:none;">
-    <h3>الكلفة</h3>
-    <label><input type="radio" name="cost" value="0.5"> نص كلفة</label><br>
-    <label><input type="radio" name="cost" value="1"> كلفة كاملة</label><br>
-</div>
+        <label><input type="radio" name="length" value="1.5"> 1.5 متر</label>
+        <label><input type="radio" name="length" value="2"> 2 متر</label>
+        <label><input type="radio" name="length" value="3"> 3 متر</label>
+        <label><input type="radio" name="length" value="4"> 4 متر</label>
+    </div>
 
-<h2>السعر النهائي:</h2>
-<h1 id="price">0 جنيه</h1>
+    <!-- التفصيل + الكلفة (سؤال واحد بـ 6 اختيارات) -->
+    <div id="final-section" style="display:none;">
+        <h3>التفصيل والكلفة</h3>
 
-<script src="script.js"></script>
+        <label><input type="radio" name="final" value="1"> تفصيل عادي</label>
+        <label><input type="radio" name="final" value="2"> تفصيل مكفف</label>
+        <label><input type="radio" name="final" value="3"> نص كُلفة</label>
+        <label><input type="radio" name="final" value="4"> كُلفة كاملة</label>
+        <label><input type="radio" name="final" value="5"> كُلفة كاملة بدون شريط</label>
+        <label><input type="radio" name="final" value="6"> نص كُلفة بدون شريط</label>
+    </div>
+
+    <h2>السعر النهائي:</h2>
+    <h1 id="price">0 جنيه</h1>
+
+    <!-- ملف الجافاسكربت -->
+    <script src="script.js"></script>
 </body>
 </html>
